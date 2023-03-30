@@ -30,7 +30,7 @@ static void	editorloop(t_sdlcontext *sdl, t_editor *ed)
 		update_editor_toolbar(ed, &ed->toolbar_gui);
 		if (ed->tool != NULL)
 			ed->tool->update(ed, sdl);
-		draw_crosshair(sdl);
+		draw_crosshair(&ed->world);
 		draw_fps_counter(sdl, ed->world.clock.fps);
 		ed->hid.mouse.click_unhandled = false;
 		update_window_surface(sdl);

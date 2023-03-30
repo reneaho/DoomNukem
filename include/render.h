@@ -27,6 +27,7 @@
 
 # define CLR_BLACK 0xFF000000
 # define CLR_WHITE 0xFFFFFFFF
+# define CLR_WHITE_WARM 0xF3E7D3
 # define CLR_PRPL 14231500
 # define CLR_TURQ 5505010
 # define CLR_BLUE 255
@@ -50,6 +51,8 @@
 # define DEFAULT_RES_SCALING 0.5f
 # define DEFAULT_RES_X 1280
 # define DEFAULT_RES_Y 720
+
+struct s_world;
 
 typedef struct s_step
 {
@@ -294,7 +297,7 @@ void				draw_rectangle_raster(t_sdlcontext sdl, \
 void				draw_rectangle_raster_few(t_sdlcontext sdl, \
 										t_rectangle rect, uint32_t clr);
 void				draw_triangle(t_triangle_draw td);
-void				draw_crosshair(t_sdlcontext *sdl);
+void				draw_crosshair(struct s_world *world);
 void				draw_rect_tri(t_sdlcontext *sdl, t_rectangle rect, \
 									uint32_t clr);
 

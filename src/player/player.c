@@ -53,6 +53,22 @@ static void	player_init_weapons(t_player *player, t_world *world)
 	}
 }
 
+static void	player_init_crosshair(t_player *player, t_sdlcontext *sdl)
+{
+	t_point	middle;
+
+	middle = point_div(sdl->screensize, 2);
+	player->crosshair.horizontal_start.x = middle.x - 5;
+	player->crosshair.horizontal_end.x = middle.x + 5;
+	player->crosshair.horizontal_start.y = middle.y;
+	player->crosshair.horizontal_end.y = middle.y;
+	player->crosshair.vertical_start.y = middle.y - 5;
+	player->crosshair.vertical_end.y = middle.y + 5;
+	player->crosshair.vertical_start.x = middle.x;
+	player->crosshair.vertical_end.x = middle.x;
+
+}
+
 void	player_init(t_player *player, t_sdlcontext *sdl, t_world *world)
 {
 	ft_bzero(player, sizeof(t_player));
@@ -71,4 +87,5 @@ void	player_init(t_player *player, t_sdlcontext *sdl, t_world *world)
 	player->gun = &player->guns[0];
 	player->guns[0].player_owned = false;
 	player->guns[1].player_owned = false;
+	player_init_crosshair(player, sdl);
 }

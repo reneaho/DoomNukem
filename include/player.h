@@ -41,6 +41,14 @@ typedef struct s_gui_notification
 	t_game_string	str;
 }	t_gui_notification;
 
+typedef struct s_crosshair
+{
+	t_point	horizontal_start;
+	t_point	horizontal_end;
+	t_point	vertical_start;
+	t_point	vertical_end;
+}	t_crosshair;
+
 //TODO: add raycast_info
 //player speed is read-only - used for animations etc
 typedef struct s_player
@@ -70,6 +78,7 @@ typedef struct s_player
 	struct s_gun		*gun;
 	float				collision_radius;
 	float				fov;
+	t_crosshair			crosshair;
 }	t_player;
 
 t_gun_stats	gun_machinegun(void);
