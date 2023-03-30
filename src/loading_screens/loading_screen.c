@@ -13,20 +13,6 @@
 #include "doomnukem.h"
 #include "tga.h"
 
-static void	close_window(SDL_Event	e)
-{
-	while (SDL_PollEvent(&e))
-	{
-		if (e.type == SDL_KEYDOWN)
-		{
-			if (iskey(e, SDLK_ESCAPE))
-				exit(0);
-		}
-		if (e.type == SDL_QUIT)
-			exit(0);
-	}
-}
-
 void	print_loading_message(char *loading_message, t_sdlcontext *sdl)
 {
 	int			len;
@@ -56,11 +42,15 @@ void	editor_loading_screen(char *loading_message, t_sdlcontext *sdl)
 			(t_point){sdl->window_w, sdl->window_h});
 	if (loading_message != NULL)
 		print_loading_message(loading_message, sdl);
-	ft_memcpy(sdl->window_surface->pixels, sdl->surface->pixels, \
-			sizeof(uint32_t) * sdl->window_w * sdl->window_h);
-	close_window(e);
-	if (SDL_UpdateWindowSurface(sdl->window) < 0)
-		doomlog(LOG_EC_SDL_UPDATEWINDOWSURFACE, NULL);
+	while (SDL_PollEvent(&e))
+	{
+		if ((e.type == SDL_KEYDOWN && iskey(e, SDLK_ESCAPE)) ||
+				e.type == SDL_QUIT)
+			quit_editor();
+		if (e.type == SDL_WINDOWEVENT)
+			sdl_windowevents(e, sdl);
+	}
+	update_window_surface(sdl);
 }
 
 void	playmode_loading_screen_loop(char *loading_message, t_sdlcontext *sdl)
@@ -103,9 +93,13 @@ void	playmode_loading_screen(char *loading_message, t_sdlcontext *sdl)
 			(t_point){sdl->window_w, sdl->window_h});
 	if (loading_message != NULL)
 		print_loading_message(loading_message, sdl);
-	ft_memcpy(sdl->window_surface->pixels, sdl->surface->pixels, \
-			sizeof(uint32_t) * sdl->window_w * sdl->window_h);
-	close_window(e);
-	if (SDL_UpdateWindowSurface(sdl->window) < 0)
-		doomlog(LOG_EC_SDL_UPDATEWINDOWSURFACE, NULL);
+	while (SDL_PollEvent(&e))
+	{
+		if ((e.type == SDL_KEYDOWN && iskey(e, SDLK_ESCAPE)) ||
+				e.type == SDL_QUIT)
+			quit_playmode();
+		if (e.type == SDL_WINDOWEVENT)
+			sdl_windowevents(e, sdl);
+	}
+	update_window_surface(sdl);
 }

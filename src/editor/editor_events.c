@@ -13,19 +13,6 @@
 #include "doomnukem.h"
 #include "editor_tools.h"
 
-void	editor_save_quit(t_editor *ed)
-{
-	world_save_to_file(ed->world);
-	SDL_Quit();
-	exit (0);
-}
-
-void	editor_quit(void)
-{
-	SDL_Quit();
-	exit (0);
-}
-
 static void	editor_key_down(t_editor *ed, SDL_Event e)
 {
 	if (iskey(e, SDLK_TAB))
@@ -64,13 +51,15 @@ void	editor_events(t_editor *ed)
 			if (iskey(e, SDLK_ESCAPE))
 			{
 				if ((ed->hid.keystate >> KEYS_SHIFTMASK) & 1)
-					editor_quit();
-				editor_save_quit(ed);
+					quit_editor();
+				quit_save_editor(ed);
 			}
 			editor_key_down(ed, e);
 		}
 		if (e.type == SDL_QUIT)
-			editor_save_quit(ed);
+			quit_save_editor(ed);
+		if (e.type == SDL_WINDOWEVENT)
+			sdl_windowevents(e, ed->world.sdl);
 	}
 	update_input(&ed->hid.input, ed->hid);
 }

@@ -176,9 +176,11 @@ void			free_floor(t_world *world, t_area *room);
 void			free_ceilings(t_world *world, t_area *room);
 void			free_walls(t_area *room, t_world *world);
 
+void			sdl_windowevents(SDL_Event e, t_sdlcontext *sdl);
 void			draw_skybox_image(t_world *world);
 void			free_list_node(void *content, size_t size);
-void			playmode_quit(t_game *game);
+void			quit_playmode(void);
+void			quit_editor(void);
 void			update_audio(t_world *world);
 void			respawn_player(t_game *game);
 t_vector3		find_playerspawn(t_world *world);
@@ -306,9 +308,9 @@ void			error_log(int error_code);
 /* SDL */
 void			create_sdlcontext(t_app_argument app_argument, \
 									t_sdlcontext	*sdl);
-void			create_sdl_window(t_sdlcontext *sdl, t_screen_mode mode);
+void			create_sdl_window(t_sdlcontext *sdl);
 void			set_sdl_settings(t_sdlcontext *sdl);
-void			quit_game(t_sdlcontext *sdl);
+void			quit_game(void);
 
 /* FONT.C */
 

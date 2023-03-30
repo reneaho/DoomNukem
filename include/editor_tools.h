@@ -124,7 +124,7 @@ typedef struct s_gui_init
 //struct	s_editor;
 
 void			editor_quit(void);
-void			editor_save_quit(t_editor *ed);
+void			quit_save_editor(t_editor *ed);
 void			set_up_editor(t_sdlcontext *sdl, t_editor *ed);
 
 /* INTERNAL GUI */

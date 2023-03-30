@@ -118,7 +118,7 @@ SRCFILES= main.c img.c deltatime.c \
 		inputhelper.c \
 		walls.c walls_2.c walls_3.c file_open.c \
 		moveplayer.c \
-		init_sdl.c \
+		sdl_window.c \
 		logging/log_tools.c \
 		logging/error_codes.c \
 		logging/error_messages.c \
@@ -178,6 +178,7 @@ SRCFILES= main.c img.c deltatime.c \
 		tga_parser/image_data.c \
 		tga_parser/preliminary_data.c \
 		game_random.c \
+		quit.c \
 		logging/prot_memalloc.c \
 		objects/object_init.c \
 		objects/object_primitives.c \

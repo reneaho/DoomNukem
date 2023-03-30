@@ -15,6 +15,8 @@
 
 void	update_window_surface(t_sdlcontext *sdl)
 {
+	if (sdl->window_exists == false)
+		return ;
 	ft_memcpy(sdl->window_surface->pixels, sdl->surface->pixels, \
 				sizeof(uint32_t) * sdl->window_w * sdl->window_h);
 	if (SDL_UpdateWindowSurface(sdl->window) < 0)

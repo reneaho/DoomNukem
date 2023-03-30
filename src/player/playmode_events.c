@@ -13,12 +13,6 @@
 #include "doomnukem.h"
 #include "editor_tools.h"
 
-void	playmode_quit(t_game *game)
-{
-	SDL_Quit();
-	exit(0);
-}
-
 void	key_event(SDL_Event e, t_game *game)
 {
 	if (iskey(e, SDLK_F1))
@@ -26,7 +20,7 @@ void	key_event(SDL_Event e, t_game *game)
 	if (iskey(e, SDLK_F2))
 		game->world.debug_gui->hidden = !game->world.debug_gui->hidden;
 	if (iskey(e, SDLK_ESCAPE))
-		playmode_quit(game);
+		quit_playmode();
 }
 
 void	playmode_events(t_game *game)
@@ -44,8 +38,10 @@ void	playmode_events(t_game *game)
 		if (e.type == SDL_KEYDOWN)
 			key_event(e, game);
 		if (e.type == SDL_QUIT)
-			playmode_quit(game);
+			quit_playmode();
 		controller_events(e, &game->hid);
+		if (e.type == SDL_WINDOWEVENT)
+			sdl_windowevents(e, game->world.sdl);
 	}
 	update_input(&game->hid.input, game->hid);
 }

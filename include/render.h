@@ -224,6 +224,8 @@ typedef struct s_sdlcontext
 	SDL_Window					*window;
 	SDL_Surface					*window_surface;
 	SDL_Surface					*surface;
+	bool						window_changed;
+	bool						window_exists;
 	uint32_t					*scaling_buffer;
 	t_render					render;
 	t_platform					platform;
