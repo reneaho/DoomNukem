@@ -34,6 +34,10 @@ static void	sdl_errors(int error_code, int fd)
 		ft_putstr_fd("TTF_OpenFont failed: ", fd);
 	if (error_code == LOG_EC_TTF_RENDERTEXTBLENDED)
 		ft_putstr_fd("TTF_RenderText_Blended failed: ", fd);
+	if (error_code == LOG_EC_SDL_SETWINDOWFULLSCREEN)
+		ft_putstr_fd("SDL_SetWindowFullScreen failed: ", fd);
+		if (error_code == LOG_EC_SDL_GETCURRENTDISPLAYMODE)
+		ft_putstr_fd("SDL_GetCurrentDisplayMode failed: ", fd);
 	ft_putendl_fd(SDL_GetError(), fd);
 }
 

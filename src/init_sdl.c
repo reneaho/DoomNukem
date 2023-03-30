@@ -17,26 +17,19 @@ void	create_sdl_window(t_sdlcontext *sdl, t_screen_mode mode)
 {
 	SDL_DisplayMode	dmode;
 
-	SDL_GetCurrentDisplayMode(0, &dmode);
-	if (dmode.w != sdl->window_w || dmode.h != sdl->window_h)
-		mode = screen_mode_windowed;
-	sdl->window_w = ft_clamp(sdl->window_w, 0, dmode.w);
-	sdl->window_h = ft_clamp(sdl->window_h, 0, dmode.h);
+	if (SDL_GetCurrentDisplayMode(0, &dmode) < 0)
+		doomlog(LOG_EC_SDL_GETCURRENTDISPLAYMODE, NULL);
+	sdl->window_w = dmode.w;
+	sdl->window_h = dmode.h;
 	sdl->screensize = (t_point){sdl->window_w, sdl->window_h};
-	if (mode != screen_mode_fullscreen)
-	{
-		sdl->window = SDL_CreateWindow("DoomNukem", \
-			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, \
-			sdl->window_w, sdl->window_h, SDL_WINDOW_SHOWN);
-	}
-	if (mode == screen_mode_fullscreen)
-	{
-		sdl->window = SDL_CreateWindow("DoomNukem", 0, 0, \
-			sdl->window_w, sdl->window_h, SDL_WINDOW_SHOWN | \
-										SDL_WINDOW_FULLSCREEN);
-	}
+	sdl->window = SDL_CreateWindow("DoomNukem", 0, 0, \
+		sdl->window_w, sdl->window_h, SDL_WINDOW_SHOWN | \
+								SDL_WINDOW_FULLSCREEN);
 	if (sdl->window == NULL)
 		doomlog(LOG_EC_SDL_CREATEWINDOW, NULL);
+	if (SDL_SetWindowFullscreen(sdl->window, SDL_WINDOW_FULLSCREEN) < 0)
+		doomlog(LOG_EC_SDL_SETWINDOWFULLSCREEN, NULL);
+	
 	sdl->window_surface = SDL_GetWindowSurface(sdl->window);
 	if (sdl->window_surface == NULL)
 		doomlog(LOG_EC_SDL_GETWINDOW_SURFACE, NULL);
@@ -75,15 +68,8 @@ void	set_sdl_settings(t_sdlcontext *sdl)
 	t_graphic_prefs	prefs;
 
 	free_sdl_stuff(sdl);
-	prefs.screenmode = screen_mode_windowed;
-	prefs.resolution_x = DEFAULT_RES_X;
-	prefs.resolution_y = DEFAULT_RES_Y;
-	prefs.resolutionscale = DEFAULT_RES_SCALING;
-	prefs.volume = 5.0f;
-	sdl->window_w = prefs.resolution_x;
-	sdl->window_h = prefs.resolution_y;
-	sdl->resolution_scaling = ft_clampf(prefs.resolutionscale, 0.25f, 1.0f);
-	sdl->audio.sfx_volume = prefs.volume;
+	sdl->resolution_scaling = ft_clampf(DEFAULT_RES_SCALING, 0.25f, 1.0f);
+	sdl->audio.sfx_volume = 5.0f;
 	create_sdl_window(sdl, prefs.screenmode);
 	sdl->surface = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, \
 				sdl->window_w, sdl->window_h, 32, SDL_PIXELFORMAT_ARGB8888);
