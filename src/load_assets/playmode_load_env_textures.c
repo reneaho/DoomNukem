@@ -26,6 +26,7 @@ static void	unpack_and_load_texture(int txtr_i, int level_fd,
 	doomlog_mul(LOG_NORMAL, (char *[3]){\
 			"unpacked and loaded .tga file:", \
 			sdl->env_textures[txtr_i].name, NULL});
+	remove(TEMPIMGENV);
 }
 
 static int	parse_image_env_list(int level_fd, t_sdlcontext *sdl)
@@ -67,4 +68,5 @@ void	playmode_load_env_textures(int level_fd, t_sdlcontext *sdl)
 	ret = parse_image_env_list(level_fd, sdl);
 	if (ret == -1)
 		doomlog(LOG_EC_GETNEXTLINE, "playmode_load_env_textures");
+	remove(TEMPIMGENVLIST);
 }

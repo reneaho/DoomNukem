@@ -26,6 +26,7 @@ static void	unpack_and_load_music(int music_i, int level_fd,
 	doomlog_mul(LOG_NORMAL, (char *[3]){\
 			"unpacked and loaded music file:", \
 			audio->music[music_i].name, NULL});
+	remove(TEMPMUSIC);
 }
 
 static int	parse_music_list(int level_fd, t_audio *audio)
@@ -67,4 +68,5 @@ void	playmode_load_music(int level_fd, t_audio *audio)
 	ret = parse_music_list(level_fd, audio);
 	if (ret == -1)
 		doomlog(LOG_EC_GETNEXTLINE, "playmode_load_music");
+	remove(TEMPMUSICLIST);
 }

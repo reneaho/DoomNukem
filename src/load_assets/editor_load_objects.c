@@ -27,7 +27,7 @@ static int	parse_object_list(int fd, t_sdlcontext *sdl)
 	{
 		if (object_path)
 		{
-			sdl->objects[i] = objparse(object_path);
+			sdl->objects[i] = objparse(object_path, APPMODE_EDIT);
 			if (sdl->objects[i].vertices != NULL)
 				ft_strncpy_term(sdl->objects[i].name, \
 						extract_file_name(object_path), 250);

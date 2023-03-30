@@ -21,19 +21,11 @@ libs/installed_libs/lib/FMOD/copied
 .createcomponent_data/temp_*
 .createcomponent_data/bu/*
 
-coverage.py
-asset_list_creator.sh
 
 libft/libft.a
 libft/**.o
-lua-5.3.6/install/
-lua-5.3.6/src/liblua.a
-lua-5.3.6/src/lua
-lua-5.3.6/src/luac
-mapfile1
 callgrind.out*
-DoomNukem
 doom-nukem
-doomlog.txt
-assets/temp/.temp*
+log.txt
+temp/.temp*
 .vscode/

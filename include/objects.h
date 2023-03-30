@@ -19,6 +19,7 @@
 
 struct	s_world;
 struct	s_sdlcontext;
+enum	e_app_mode;
 
 typedef struct s_material
 {
@@ -116,9 +117,9 @@ typedef struct s_vertex_parse
 	int			ret;
 }	t_vertex_parse;
 
-t_object		objparse(char *file_name);
+t_object		objparse(char *file_name, enum e_app_mode app_mode);
 t_material		parse_mat(int fd, char *name);
-void			parse_mtllib(t_list **list, char *file_name);
+void			parse_mtllib(t_list **list, char *file_name, enum e_app_mode app_mode);
 t_material		*default_mat(void);
 void			parse_animframe(int fd, t_object_anim_frame *frame, \
 								t_object *object);

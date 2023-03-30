@@ -305,10 +305,10 @@ LDFLAGS = -Wl,-rpath $(INSTALLED_LIBS_DIR)/lib
 
 UNAME= $(shell uname)
 ifeq ($(UNAME), Darwin)
-LIBS= $(LIBFT) -lm -L$(INSTALLED_LIBS_DIR)/lib -lSDL2 -lSDL2_ttf -L$(INSTALLED_LIBS_DIR)/lib -lfmod -lfmodL
+LIBS= $(LIBFT) -lm -L$(INSTALLED_LIBS_DIR)/lib -lSDL2 -lSDL2_ttf -lfmod -lfmodL
 AUTOGEN =
 else ifeq ($(UNAME), Linux)
-LIBS =  $(LIBFT) -lm -L$(INSTALLED_LIBS_DIR)/lib -lSDL2 -lSDL2_ttf -L$(INSTALLED_LIBS_DIR)/lib -lfmod -lfmodL -lpthread
+LIBS =  $(LIBFT) -lm -L$(INSTALLED_LIBS_DIR)/lib -lSDL2 -lSDL2_ttf -lfmod -lfmodL -lpthread
 AUTOGEN = ./autogen.sh &&
 else
 warning:
@@ -361,14 +361,10 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 $(OBJ): Makefile include/*.h
 
 clean:
-	@echo "$(RED)\nCleaning obj folder...$(DEFAULT)"
-	@rm -rf $(OBJ_PATH)
-	@echo "$(GREEN)DONE.\n$(DEFAULT)"
+	rm -rf $(OBJ_PATH)
 
 fclean: clean
-	@echo "$(RED)Deleting .$(NAME)...$(DEFAULT)" 
-	@rm -f $(NAME)
-	@echo "$(GREEN)DONE.\n$(DEFAULT)"
+	rm -f $(NAME)
 
 re: clean all
 
@@ -433,8 +429,3 @@ $(FREETYPE): $(FREETYPE_DIR)/ready_to_build
 
 $(SDL2_TTF): $(SDL2_TTF_DIR)/ready_to_build
 	cd $(SDL2_TTF_DIR) && make && make install
-
-# Output colors
-DEFAULT	:=\033[0m
-GREEN	:=\033[0;32m
-RED		:=\033[0;31m

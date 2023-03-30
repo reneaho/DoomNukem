@@ -74,4 +74,5 @@ void	playmode_load_anim_legend(int level_fd, t_sdlcontext *sdl)
 	if (ret == -1)
 		doomlog(LOG_EC_GETNEXTLINE, "playmode_load_anim_legend");
 	ft_fileclose(temp_fd, ANIMLEGENDPATH);
+	remove(TEMPANIMLEGEND);
 }

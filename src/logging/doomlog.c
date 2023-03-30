@@ -14,7 +14,7 @@
 
 static int	doomlog_open_error_exit(void)
 {
-	ft_putstr_fd("!!! doomlog.txt - ", 2);
+	ft_putstr_fd("!!! log.txt - ", 2);
 	error_codes(LOG_EC_OPEN, 2);
 	exit (1);
 }
@@ -26,7 +26,7 @@ static int	doomlog_fd(void)
 
 	if (first_call)
 	{
-		fd = open("doomlog.txt", O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, \
+		fd = open("log.txt", O_CREAT | O_WRONLY | O_TRUNC | O_APPEND, \
 							S_IRWXU | S_IRWXG | S_IRWXO);
 		if (fd == -1)
 			doomlog_open_error_exit();
@@ -35,7 +35,7 @@ static int	doomlog_fd(void)
 	}
 	else
 	{
-		fd = open("doomlog.txt", O_WRONLY | O_APPEND);
+		fd = open("log.txt", O_WRONLY | O_APPEND);
 		if (fd == -1)
 			doomlog_open_error_exit();
 	}
@@ -63,7 +63,7 @@ void	doomlog_mul(int code, char **str)
 	}
 	if (close(fd) == -1)
 	{
-		error_message(LOG_EC_CLOSE, fd, "doomlog.txt");
+		error_message(LOG_EC_CLOSE, fd, "log.txt");
 		exit (1);
 	}
 }
@@ -90,7 +90,7 @@ void	doomlog(int code, char *str)
 	}
 	if (close(fd) == -1)
 	{
-		error_message(code, fd, "doomlog.txt");
+		error_message(code, fd, "log.txt");
 		exit (1);
 	}
 }

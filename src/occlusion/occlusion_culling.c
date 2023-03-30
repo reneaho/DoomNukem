@@ -83,9 +83,9 @@ void	calculate_triangles(
 	render->start_index = 0;
 	render->screenspace_ptri_count = 0;
 	render->screen_edge.max.x = \
-	(float)(sdl.window_w * sdl.resolution_scaling) - 1.0f;
+	(float)(sdl.window_w * sdl.resolution_scaling);
 	render->screen_edge.max.y = \
-	(float)(sdl.window_h * sdl.resolution_scaling) - 1.0f;
+	(float)(sdl.window_h * sdl.resolution_scaling);
 	render->screen_edge.min.x = 0.0f;
 	render->screen_edge.min.y = 0.0f;
 	render->end_index = entity->occlusion.world_tri_count - 1;

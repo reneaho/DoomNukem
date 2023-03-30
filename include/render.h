@@ -23,7 +23,7 @@
 # include "occlusion.h"
 # include "colors.h"
 # include "render_utils.h"
-# include "fmod.h"
+# include "../libs/installed_libs/include/FMOD/fmod.h"
 
 # define CLR_BLACK 0xFF000000
 # define CLR_WHITE 0xFFFFFFFF

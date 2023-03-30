@@ -14,7 +14,7 @@
 #include "objects.h"
 #include "file_io.h"
 
-t_list	*get_material_list(int fd)
+static t_list	*get_material_list(int fd, t_app_mode app_mode)
 {
 	char	*line;
 	t_list	*list;
@@ -28,7 +28,7 @@ t_list	*get_material_list(int fd)
 		if (line)
 		{
 			if (ft_strnstr(line, "mtllib ", sizeof("mtllib")) != NULL)
-				parse_mtllib(&list, line + sizeof("mtllib"));
+				parse_mtllib(&list, line + sizeof("mtllib"), app_mode);
 			free(line);
 			line = NULL;
 		}
@@ -52,7 +52,7 @@ void	obj_save_vertices_uvs_faces(t_object *object, t_object_parse *op)
 }
 
 //TODO: return a crash bandicoot if open failed
-t_object	objparse(char *filename)
+t_object	objparse(char *filename, t_app_mode app_mode)
 {
 	t_object		result;
 	t_object_parse	op;
@@ -60,7 +60,7 @@ t_object	objparse(char *filename)
 
 	fd = ft_fileopen(filename, O_RDONLY);
 	ft_bzero(&result, sizeof(t_object));
-	op.materials = get_material_list(fd);
+	op.materials = get_material_list(fd, app_mode);
 	op.vertices = get_vertex_list(fd);
 	op.uvs = get_uv_list(fd);
 	op.faces = get_face_list(fd, op.materials);

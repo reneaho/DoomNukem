@@ -22,6 +22,7 @@ static void	unpack_and_load_anim(int level_fd, char *anim_path,
 	parse_anim(TEMPANIM, anim_name, object);
 	doomlog_mul(LOG_NORMAL, (char *[3]){\
 			"unpacked and loaded anim:", extract_file_name(anim_path), NULL});
+	remove(TEMPANIM);
 }
 
 static int	parse_anim_list(int level_fd, char *anim_name, t_object *object)
@@ -63,4 +64,5 @@ void	playmode_load_anims(int level_fd, char *anim_name, t_object *object)
 	ret = parse_anim_list(level_fd, anim_name, object);
 	if (ret == -1)
 		doomlog(LOG_EC_GETNEXTLINE, "playmode_load_anims");
+	remove(TEMPANIMLIST);
 }

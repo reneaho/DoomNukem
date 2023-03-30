@@ -13,7 +13,7 @@
 #ifndef DOOMNUKEM_H
 # define DOOMNUKEM_H
 
-# include "libft.h"
+# include "../libft/libft.h"
 # include "log.h"
 # include <errno.h>
 //TODO: remove mby? just define INT_MAX yourself
@@ -48,24 +48,24 @@
 # define ANIMLISTPATH "assets/asset_lists/anim_list.txt"
 # define ANIMLEGENDPATH "assets/objects/animations/anim_legend.txt"
 
-# define TEMPIMGLIST "assets/temp/.temp_image_list"
-# define TEMPIMGENVLIST "assets/temp/.temp_image_env_list"
-# define TEMPOBJLIST "assets/temp/.temp_object_list"
-# define TEMPFONTLIST "assets/temp/.temp_font_list"
-# define TEMPSOUNDLIST "assets/temp/.temp_sound_list"
-# define TEMPMUSICLIST "assets/temp/.temp_music_list"
-# define TEMPANIMLIST "assets/temp/.temp_anim_list"
+# define TEMPIMGLIST "temp/.temp_image_list"
+# define TEMPIMGENVLIST "temp/.temp_image_env_list"
+# define TEMPOBJLIST "temp/.temp_object_list"
+# define TEMPFONTLIST "temp/.temp_font_list"
+# define TEMPSOUNDLIST "temp/.temp_sound_list"
+# define TEMPMUSICLIST "temp/.temp_music_list"
+# define TEMPANIMLIST "temp/.temp_anim_list"
 
-# define TEMPIMG "assets/temp/.temp_image"
-# define TEMPIMGENV "assets/temp/.temp_image_env"
-# define TEMPOBJ "assets/temp/.temp_object"
-# define TEMPMTL "assets/temp/.temp_mtl"
-# define TEMPFONT "assets/temp/.temp_font"
-# define TEMPSOUND "assets/temp/.temp_sound"
-# define TEMPSOUNDLOOP "assets/temp/.temp_sound_loop"
-# define TEMPMUSIC "assets/temp/.temp_music"
-# define TEMPANIM "assets/temp/.temp_anim"
-# define TEMPANIMLEGEND "assets/temp/.temp_anim_legend"
+# define TEMPIMG "temp/.temp_image"
+# define TEMPIMGENV "temp/.temp_image_env"
+# define TEMPOBJ "temp/.temp_object"
+# define TEMPMTL "temp/.temp_mtl"
+# define TEMPFONT "temp/.temp_font"
+# define TEMPSOUND "temp/.temp_sound"
+# define TEMPSOUNDLOOP "temp/.temp_sound_loop"
+# define TEMPMUSIC "temp/.temp_music"
+# define TEMPANIM "temp/.temp_anim"
+# define TEMPANIMLEGEND "temp/.temp_anim_legend"
 
 # define DEFAULTLEVEL "level0"
 # define LOADINGSCREENIMG "assets/images/tga/loading_screen.tga"

@@ -17,16 +17,16 @@
 
 void	draw(t_sdlcontext sdl, t_point pos, uint32_t clr)
 {
-	if (pos.x < 0 || pos.x >= sdl.surface->w - 2
-		|| pos.y < 0 || pos.y >= sdl.surface->h - 2)
+	if (pos.x < 0 || pos.x >= sdl.surface->w
+		|| pos.y < 0 || pos.y >= sdl.surface->h)
 		return ;
 	((uint32_t *)sdl.surface->pixels)[pos.x + (pos.y * sdl.surface->w)] = clr;
 }
 
 void	draw_alpha(t_sdlcontext sdl, t_point pos, uint32_t clr)
 {
-	if (pos.x < 0 || pos.x >= sdl.window_w - 2
-		|| pos.y < 0 || pos.y >= sdl.window_h - 2)
+	if (pos.x < 0 || pos.x >= sdl.window_w
+		|| pos.y < 0 || pos.y >= sdl.window_h)
 		return ;
 	((uint32_t *)sdl.surface->pixels)[pos.x + (pos.y * sdl.window_w)] = \
 			blend_colors_alpha(((uint32_t *)sdl.surface->pixels) \

@@ -22,11 +22,13 @@ static void	unpack_and_load_sound(int sample_i, int level_fd,
 	{
 		load_and_write_filecontent(level_fd, sound_name, TEMPSOUNDLOOP);
 		create_sound(sample_i, TEMPSOUNDLOOP, audio);
+		remove(TEMPSOUNDLOOP);
 	}
 	else
 	{
 		load_and_write_filecontent(level_fd, sound_name, TEMPSOUND);
 		create_sound(sample_i, TEMPSOUND, audio);
+		remove(TEMPSOUND);
 	}
 	if (audio->samples[sample_i].sound != NULL)
 		ft_strncpy_term(audio->samples[sample_i].name, \
@@ -34,6 +36,7 @@ static void	unpack_and_load_sound(int sample_i, int level_fd,
 	doomlog_mul(LOG_NORMAL, (char *[3]){\
 			"unpacked and loaded sound file:", \
 			audio->samples[sample_i].name, NULL});
+	
 }
 
 static int	parse_sound_list(int level_fd, t_audio *audio)
@@ -75,4 +78,5 @@ void	playmode_load_sounds(int level_fd, t_audio *audio)
 	ret = parse_sound_list(level_fd, audio);
 	if (ret == -1)
 		doomlog(LOG_EC_GETNEXTLINE, "playmode_load_sounds");
+	remove(TEMPSOUNDLIST);
 }

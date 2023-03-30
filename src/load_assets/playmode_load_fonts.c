@@ -24,6 +24,7 @@ static void	unpack_and_load_font(int font_i, int level_fd,
 				extract_file_name(font_name), 120);
 	doomlog_mul(LOG_NORMAL, (char *[3]){\
 			"unpacked and loaded .ttf file:", sdl->fonts[font_i].name, NULL});
+	remove(TEMPFONT);
 }
 
 static int	parse_font_list(int level_fd, t_sdlcontext *sdl)
@@ -66,4 +67,5 @@ void	playmode_load_fonts(int level_fd, t_sdlcontext *sdl)
 	if (ret == -1)
 		doomlog(LOG_EC_GETNEXTLINE, "playmode_load_fonts");
 	sdl->font_default = &sdl->fonts[0];
+	remove(TEMPFONTLIST);
 }

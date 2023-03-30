@@ -71,14 +71,17 @@ t_material	parse_mat(int fd, char *name)
 	return (mat);
 }
 
-void	parse_mtllib(t_list **list, char *filename)
+void	parse_mtllib(t_list **list, char *filename, t_app_mode app_mode)
 {
 	t_mat_parse	mp;
 
 	ft_bzero(&mp, sizeof(t_mat_parse));
 	ft_strncpy_term(mp.mat_path, OBJPATH, 250);
 	ft_strcat(mp.mat_path, filename);
-	mp.fd = ft_fileopen(mp.mat_path, O_RDONLY);
+	if (app_mode == APPMODE_EDIT)
+		mp.fd = ft_fileopen(mp.mat_path, O_RDONLY);
+	else
+		mp.fd = ft_fileopen(TEMPMTL, O_RDONLY);
 	mp.ret = get_next_line(mp.fd, &mp.line);
 	while (mp.ret)
 	{
@@ -96,5 +99,8 @@ void	parse_mtllib(t_list **list, char *filename)
 	}
 	if (mp.ret == -1)
 		doomlog(LOG_EC_GETNEXTLINE, mp.mat_path);
-	ft_fileclose(mp.fd, mp.mat_path);
+	if (app_mode == APPMODE_EDIT)
+		ft_fileclose(mp.fd, mp.mat_path);
+	else
+		ft_fileclose(mp.fd, TEMPMTL);
 }

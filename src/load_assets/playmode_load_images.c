@@ -25,6 +25,7 @@ static void	unpack_and_load_image(int img_i, int level_fd,
 				extract_file_name(image_name), 120);
 	doomlog_mul(LOG_NORMAL, (char *[3]){\
 			"unpacked and loaded .tga file:", sdl->images[img_i].name, NULL});
+	remove(TEMPIMG);
 }
 
 static int	parse_image_list(int level_fd, t_sdlcontext *sdl)
@@ -66,4 +67,5 @@ void	playmode_load_images(int level_fd, t_sdlcontext *sdl)
 	ret = parse_image_list(level_fd, sdl);
 	if (ret == -1)
 		doomlog(LOG_EC_GETNEXTLINE, "playmode_load_images");
+	remove(TEMPIMGLIST);
 }

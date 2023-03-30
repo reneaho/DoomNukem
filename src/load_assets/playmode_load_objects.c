@@ -73,7 +73,7 @@ static void	unpack_and_load_object(int obj_i, int level_fd,
 				"couldn't replace object_name extension to mtl");
 	load_and_write_filecontent(level_fd, object_name, TEMPOBJ);
 	load_and_write_filecontent(level_fd, material_name, TEMPMTL);
-	sdl->objects[obj_i] = objparse(TEMPOBJ);
+	sdl->objects[obj_i] = objparse(TEMPOBJ, APPMODE_PLAY);
 	if (sdl->objects[obj_i].vertices != NULL)
 		ft_strncpy_term(sdl->objects[obj_i].name, \
 				extract_file_name(object_name), 250);
@@ -85,6 +85,8 @@ static void	unpack_and_load_object(int obj_i, int level_fd,
 	listdel(&materials);
 	doomlog_mul(LOG_NORMAL, (char *[3]){\
 			"unpacked and loaded .obj file:", sdl->objects[obj_i].name, NULL});
+	remove(TEMPOBJ);
+	remove(TEMPMTL);
 }
 
 static int	parse_object_list(int level_fd, t_sdlcontext *sdl)
@@ -126,4 +128,5 @@ void	playmode_load_objects(int level_fd, t_sdlcontext *sdl)
 	ret = parse_object_list(level_fd, sdl);
 	if (ret == -1)
 		doomlog(LOG_EC_GETNEXTLINE, "playmode_load_objects");
+	remove(TEMPOBJLIST);
 }

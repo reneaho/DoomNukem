@@ -81,9 +81,9 @@ void	render_entity(t_sdlcontext *sdl, t_render *render, t_entity *entity)
 	render->screenspace_ptri_count = 0;
 	render->backface_check = entity->occlusion.is_backface_cull;
 	render->screen_edge.max.x = \
-	(float)(sdl->window_w * sdl->resolution_scaling) - 1.0f;
+	(float)(sdl->window_w * sdl->resolution_scaling);
 	render->screen_edge.max.y = \
-	(float)(sdl->window_h * sdl->resolution_scaling) - 1.0f;
+	(float)(sdl->window_h * sdl->resolution_scaling);
 	render->screen_edge.min = vector2_zero();
 	if (render->occlusion.occlusion && \
 	entity->occlusion.clip.max.x <= render->screen_edge.max.x && \
