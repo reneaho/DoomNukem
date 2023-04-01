@@ -69,6 +69,7 @@
 
 # define DEFAULTLEVEL "level0"
 # define LOADINGSCREENIMG "assets/images/tga/loading_screen.tga"
+# define SKYBOX "sky.tga"
 
 # define TEXTBACKGROUND_BORDERPADDING 6
 # define PERFGRAPH_SAMPLES 64
