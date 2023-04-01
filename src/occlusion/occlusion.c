@@ -50,10 +50,9 @@ bool	is_entity_culled(t_sdlcontext *sdl, t_render *render, t_entity *entity)
 	if (entity->obj && entity->occlusion.is_occluded == false && \
 	render->occlusion.occlusion)
 	{
-		entity->occlusion.is_occluded = \
-		is_entity_occlusion_culled(sdl, render, entity);
+		entity->occlusion.is_occluded = is_entity_occlusion_culled(sdl, render, entity);
 		if (sdl->render.occlusion.slow_render == true && \
-		entity->occlusion.is_occluded == false)
+			entity->occlusion.is_occluded == false)
 		{
 			ft_memcpy(sdl->window_surface->pixels, sdl->surface->pixels, \
 			sizeof(uint32_t) * sdl->window_w * sdl->window_h);
