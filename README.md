@@ -8,7 +8,7 @@ Crouch: Left Ctrl\
 Boosted Jump: Space + Left Ctrl during the upwards motion of the jump\
 Mouse Left Click: Shoot\
 Mouse Right Click: Zoom\
-Cycle Weapons: Q E\
+Cycle Weapons: Q E
 
 ## Authors
 [Oskari Kinnunen](https://github.com/oskarikinnunen)\
