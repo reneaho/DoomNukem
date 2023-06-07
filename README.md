@@ -1,7 +1,7 @@
 # DoomNukem - 3D first person shooter
 The project started off as a Doom 3D & Duke Nukem inspired shooter but later on evolved to its own retro style game engine.\
 The playable map is mostly a proof of functionality to showcase the engine and its current possibilities.\
-Movement:    W A S D\
+Movement:&emsp;W A S D\
 Jump:    Space\
 Run:    Left Shift\
 Crouch:    Left Ctrl\
