@@ -11,11 +11,11 @@ Mouse Right Click: Zoom\
 Cycle Weapons: Q E\
 
 ## authors
-[Oskari Kinnunen](https://github.com/oskarikinnunen)
-[Vili-Valtteri Laine](https://github.com/Vili-Valtteri)
-[Eastern Fum](https://github.com/easternfum)
-[Rene Aho](https://github.com/reneaho)
-Original project page: https://github.com/oskarikinnunen/DoomNukem
+[Oskari Kinnunen](https://github.com/oskarikinnunen)\
+[Vili-Valtteri Laine](https://github.com/Vili-Valtteri)\
+[Eastern Fum](https://github.com/easternfum)\
+[Rene Aho](https://github.com/reneaho)\
+Original project page: https://github.com/oskarikinnunen/DoomNukem\
 
 ## how to run
 make\
